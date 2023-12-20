@@ -3,9 +3,17 @@ const app = ex();
 
 const RequestIp = require('@supercharge/request-ip')
 
-
-
 const fs = require('fs');
+
+app.get('/list', async (req, res) => {
+
+    fs.readFile('listIp.txt', 'utf-8', (err, data) => {
+      if (err) throw err;
+      res.send(data.split(','));
+    }
+      );
+  
+  });
 
 app.use(async (req, res) => {
   try {
@@ -26,4 +34,5 @@ app.use(async (req, res) => {
     res.end(error);
   }
 });
+
 app.listen(9999, () => console.log('connected'));
