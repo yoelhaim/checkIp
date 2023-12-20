@@ -15,7 +15,7 @@ app.use(async (req, res) => {
 
 
     if (!r.includes(ip)) {
-      r.push(req.ip);
+      r.push(ip);
 
       fs.writeFileSync('listIp.txt', r.join());
     } else throw 'error';
