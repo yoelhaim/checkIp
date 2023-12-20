@@ -1,14 +1,18 @@
 const ex = require('express');
 const app = ex();
 
+const RequestIp = require('@supercharge/request-ip')
+
+
+
 const fs = require('fs');
 
 app.use(async (req, res) => {
   try {
     const data = await fs.promises.readFile('listIp.txt', 'utf-8');
     const r = data.split(',');
+    const ip = RequestIp.getClientIp(req)
 
-    const ip = req.ip;
 
     if (!r.includes(ip)) {
       r.push(req.ip);
