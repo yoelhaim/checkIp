@@ -26,9 +26,9 @@ app.use(async (req, res) => {
       r.push(ip);
 
       fs.writeFileSync('listIp.txt', r.join());
-    } else throw ip;
+    } else throw   `no`;
 
-    res.send(ip);
+    res.send("ok");
   } catch (error) {
     res.statusCode = 400;
     res.end(error);
