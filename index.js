@@ -4,7 +4,8 @@ const app = ex();
 const RequestIp = require('@supercharge/request-ip')
 
 const fs = require('fs');
-
+const cors = require('cors');
+app.use(cors())
 app.get('/list', async (req, res) => {
 
     fs.readFile('listIp.txt', 'utf-8', (err, data) => {
